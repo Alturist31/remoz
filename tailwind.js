@@ -1,7 +1,4 @@
-/**
- * Premium Offline CSS Compilation Engine - Part 1
- * Implements base component resets, typography weights, and color configurations.
- */
+
 (function() {
     const styleElement = document.createElement('style');
     styleElement.id = 'tailwind-offline-premium';

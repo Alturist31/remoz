@@ -4,427 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remoz | Healthy Meals & Salad Subscription Delivery</title>
-    <script src="tailwind.js"></script>
     
-    <!-- Direct Structural Override Rules to Fix the Header & Buttons -->
+    <!-- Load Tailwind CSS v3 Play CDN for dynamic, reliable browser-based mobile compiling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Custom typography weights configuration -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        .custom-nav-container {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 2.5rem !important; /* Forces perfect gaps between links */
-        }
-        .custom-nav-link {
-            text-decoration: none !important;
-            color: #475569 !important;
-            font-weight: 600 !important;
-            transition: color 0.2s ease !important;
-        }
-        .custom-nav-link:hover {
-            color: #16a34a !important;
-        }
-        .hero-btn-primary {
-            display: inline-block !important;
-            background-color: #16a34a !important;
-            color: white !important;
-            padding: 0.75rem 1.75rem !important;
-            border-radius: 0.75rem !important;
-            font-weight: 700 !important;
-            text-decoration: none !important;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1) !important;
-            transition: all 0.2s ease !important;
-        }
-        .hero-btn-primary:hover {
-            background-color: #15803d !important;
-            transform: translateY(-1px) !important;
-        }
-        .hero-btn-secondary {
-            display: inline-block !important;
-            background-color: white !important;
-            color: #334155 !important;
-            padding: 0.75rem 1.75rem !important;
-            border-radius: 0.75rem !important;
-            font-weight: 700 !important;
-            text-decoration: none !important;
-            border: 1px solid #cbd5e1 !important;
-            transition: all 0.2s ease !important;
-        }
-        .hero-btn-secondary:hover {
-            background-color: #f8fafc !important;
-            transform: translateY(-1px) !important;
-        }
-        .header-subscribe-btn {
-            display: inline-block !important;
-            background-color: #16a34a !important;
-            color: white !important;
-            padding: 0.5rem 1.25rem !important;
-            border-radius: 9999px !important;
-            font-weight: 600 !important;
-            text-decoration: none !important;
-            transition: background-color 0.2s ease !important;
-        }
-        .header-subscribe-btn:hover {
-            background-color: #15803d !important;
-        }
-        .hero-flex-wrapper {
-            display: flex !important;
-            gap: 1.5rem !important;
-            align-items: center !important;
-            margin-top: 1.5rem !important;
-        }
-
-       /* Fixes badge overlap by organizing long texts into explicit flex structures */
-        .badge-flex-container {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 0.35rem !important;
-            margin-bottom: 0.75rem !important;
-        }
-        .custom-plan-badge {
-            display: inline-block !important;
-            font-size: 0.65rem !important;
-            font-weight: 700 !important;
-            text-transform: uppercase !important;
-            padding: 0.25rem 0.625rem !important;
-            border-radius: 9999px !important;
-            white-space: nowrap !important;
-        }
-        /* Premium Offline Product Image Placeholder Containers */
-        .plan-image-frame {
-            width: 100% !important;
-            aspect-ratio: 4 / 3 !important;
-            background-color: #f1f5f9 !important;
-            border-radius: 0.75rem !important;
-            margin-bottom: 1rem !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            overflow: hidden !important;
-            border: 1px solid #e2e8f0 !important;
-        }
-        .plan-emoji-fallback {
-            font-size: 2.5rem !important;
-        }
-         /* Forces card contents to stay structurally wide instead of shrinking down */
-        .card-content-wrapper {
-            display: flex !important;
-            flex-direction: column !important;
-            width: 100% !important;
-            min-width: 0 !important;
-            flex-shrink: 0 !important;
-        }
-        
-        /* Ensures individual text layouts do not force unexpected breaks or wraps */
-        .plan-title-fix {
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-            min-height: 3.5rem !important; /* Standardizes text line box heights */
-        }
-         /* Normalizes paragraphs inside plan cards to prevent unexpected layout breaks */
-        .plan-card p {
-            margin: 0 !important;
-            padding: 0 !important;
-            line-height: 1.4 !important;
-            min-height: 2.5rem !important; /* Forces uniform heights for description lines */
-            display: flex !important;
-            align-items: center !important;
-        }
-         .plan-card, .plan-card-featured {
-            position: relative !important;
-            padding: 2rem 1.5rem 1.5rem 1.5rem !important; /* Top padding protects floating badges */
-        }
-         /* "POPULAR" Top Ribbon Positioning */
-        .ribbon-popular {
-            position: absolute !important;
-            top: 12px !important;
-            left: 16px !important;
-            z-index: 20 !important;
-            background-color: #10b981 !important;
-            color: white !important;
-            font-size: 0.65rem !important;
-            font-weight: 800 !important;
-            text-transform: uppercase !important;
-            padding: 0.35rem 0.75rem !important;
-            border-radius: 0.5rem !important;
-            letter-spacing: 0.05em !important;
-            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2) !important;
-        }
-
-        /* "SLOTS FULL" Badge Positioning */
-        .badge-slots-full {
-            position: absolute !important;
-            top: 12px !important;
-            right: 16px !important;
-            z-index: 20 !important;
-            background-color: #ef4444 !important;
-            color: white !important;
-            font-size: 0.65rem !important;
-            font-weight: 800 !important;
-            text-transform: uppercase !important;
-            padding: 0.35rem 0.75rem !important;
-            border-radius: 0.5rem !important;
-            letter-spacing: 0.05em !important;
-            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2) !important;
-        }
-
-        /* Standardize brand buttons across all cards */
-        .brand-btn-green {
-            width: 100% !important;
-            background-color: #10b981 !important;
-            color: white !important;
-            padding: 0.75rem 1.25rem !important;
-            border-radius: 0.75rem !important;
-            font-weight: 700 !important;
-            transition: all 0.2s ease !important;
-        }
-        .brand-btn-green:hover {
-            background-color: #059669 !important;
-            transform: translateY(-1px) !important;
-        }
-                /* 🚨 FIX: Enforces a rigid structural width box layout for the form card */
-        .contact-section-wrapper {
-            width: 100% !important;
-            padding: 4rem 1rem !important;
-            background-color: #ffffff !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            box-sizing: border-box !important;
-        }
-
-        .contact-card-fixed {
-            background-color: #f8fafc !important;
-            border: 1px solid #e2e8f0 !important;
-            border-radius: 1.25rem !important;
-            padding: 2.5rem !important;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-            
-            /* CRITICAL CONTROLS: Locks the box dimension at exactly 550 pixels maximum */
-            width: 100% !important;
-            max-width: 550px !important; 
-            margin: 0 auto !important;
-            box-sizing: border-box !important;
-        }
-
-        .contact-input-field {
-            width: 100% !important;
-            max-width: 100% !important;
-            text-align: center !important;
-            border: 1px solid #cbd5e1 !important;
-            padding: 0.75rem 1rem !important;
-            border-radius: 0.5rem !important;
-            background-color: #ffffff !important;
-            font-size: 0.95rem !important;
-            color: #1e293b !important;
-            box-sizing: border-box !important;
-            display: block !important;
-        }
-
-        .contact-submit-btn {
-            width: 100% !important;
-            background-color: #10b981 !important;
-            color: #ffffff !important;
-            padding: 0.85rem !important;
-            font-weight: 700 !important;
-            border-radius: 0.5rem !important;
-            border: none !important;
-            cursor: pointer !important;
-            font-size: 1rem !important;
-            margin-top: 1rem !important;
-            box-sizing: border-box !important;
-            transition: background-color 0.2s ease !important;
-        }
-        .contact-submit-btn:hover {
-            background-color: #059669 !important;
-        }
-          @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-        /* Mobile Breakpoint Fallback: Safely stacks sections ONLY on small smartphone displays */
-        @media (max-width: 768px) {
-            #home > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; text-align: center !important; }
-            #home h1 { font-size: 2.5rem !important; }
-            #home div { justify-content: center !important; align-items: center !important; text-align: center !important; }
-        }
-
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased scroll-smooth">
 
-    <!-- Header Navigation Section -->
-    <header class="bg-white shadow-sm sticky top-0 z-50" style="border-bottom: 1px solid #e2e8f0;">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="images/logo.webp" alt="Remoz Logo" style="height: 65px !important; width: auto !important; display: block !important; object-fit: contain !important;">
-            </div>
+    <!-- 1. NAVIGATION HEADER -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#home" class="flex items-center">
+                <!-- Mascot logo scaled beautifully to 65px as requested -->
+                <img src="images/logo.webp" alt="Remoz Logo" class="h-[65px] w-auto object-contain">
+            </a>
             
-            <!-- FIXED: Enforced clear structural gap spaces between navigation routes -->
-            <nav class="hidden md:flex custom-nav-container">
-                <a href="#home" class="custom-nav-link">Home</a>
-                <a href="#plans" class="custom-nav-link">Our Plans</a>
-                <a href="#contact" class="custom-nav-link">Contact Us</a>
+            <!-- Fixed Nav: Spread links apart beautifully using Tailwind gaps -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
+                <a href="#home" class="hover:text-emerald-500 transition-colors">Home</a>
+                <a href="#plans" class="hover:text-emerald-500 transition-colors">Our Plans</a>
+                <a href="#contact" class="hover:text-emerald-500 transition-colors">Contact Us</a>
             </nav>
             
-            <a href="#plans" class="header-subscribe-btn">Subscribe Now</a>
+            <a href="#plans" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2 rounded-full text-sm transition-colors shadow-sm">
+                Subscribe Now
+            </a>
         </div>
     </header>
 
-    <!-- Main Hero Marketing Section -->
-    <section id="home" style="width: 100% !important; min-height: 95vh !important; background: radial-gradient(circle at top right, #f0fdf4 0%, #ffffff 60%, #f8fafc 100%) !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 6rem 1.5rem !important; position: relative !important; overflow: hidden !important; clear: both !important;">
-        
-        <!-- Elegant Decorative Floating Nutrition Accents -->
-        <div style="position: absolute !important; top: 10%; left: 5%; font-size: 3rem !important; opacity: 0.15 !important; animation: float 6s ease-in-out infinite;">🥑</div>
-        <div style="position: absolute !important; bottom: 15%; right: 8%; font-size: 3.5rem !important; opacity: 0.15 !important; animation: float 8s ease-in-out infinite; animation-delay: 2s;">🌿</div>
-        <div style="position: absolute !important; top: 20%; right: 12%; font-size: 2.5rem !important; opacity: 0.12 !important; animation: float 7s ease-in-out infinite; animation-delay: 1s;">🍋</div>
-        
-        <div style="width: 100% !important; max-w: 1200px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: 1.2fr 1fr !important; gap: 4rem !important; align-items: center !important; box-sizing: border-box !important;">
-            
-            <!-- LEFT COMPONENT: HIGH-CONVERSION COPYWRITING PANEL -->
-            <div style="display: flex !important; flex-direction: column !important; align-items: flex-start !important; gap: 1.75rem !important; z-index: 10 !important;">
-                
-                <!-- Premium Dynamic Brand Pill -->
-                <div style="background-color: #d1fae5 !important; border: 1px solid #a7f3d0 !important; color: #065f46 !important; font-size: 0.75rem !important; font-weight: 800 !important; text-transform: uppercase !important; tracking-spacing: 0.1em !important; letter-spacing: 0.1em !important; padding: 0.5rem 1.25rem !important; border-radius: 9999px !important; font-family: sans-serif !important; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08) !important;">
-                    ✨ Protein Rich Meals Daily Subscriptiosn
-                </div>
-                
-                <!-- High-Impact Enterprise Typography -->
-                <h1 style="margin: 0 !important; font-size: 3.75rem !important; font-weight: 900 !important; color: #0f172a !important; line-height: 1.15 !important; tracking-spacing: -0.03em !important; font-family: sans-serif !important;">
+    <!-- 2. FULLY RESPONSIVE HERO SECTION -->
+    <!-- Handles layout switching automatically: Stacks vertically on mobile, splits side-by-side on desktop -->
+    <section id="home" class="relative bg-gradient-to-br from-emerald-50/50 via-white to-slate-50 py-12 md:py-20 overflow-hidden border-b border-slate-100">
+        <!-- Backdrop Floating Emojis -->
+        <div class="hidden sm:block absolute top-[12%] left-[5%] text-4xl opacity-15 select-none pointer-events-none">🥑</div>
+        <div class="hidden sm:block absolute bottom-[15%] right-[8%] text-4xl opacity-15 select-none pointer-events-none">🌿</div>
+
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <!-- Hero Left Side: Content & Actions -->
+            <div class="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left gap-6">
+                <span class="bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                    Protein Rich Meals Daily Subscriptions
+                </span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight">
                     Nutritious Meals <br>
-                    <span style="background: linear-gradient(to right, #10b981, #059669) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important;">Delivered Straight</span> <br>
+                    <span class="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">Delivered Straight</span> <br>
                     To Your Doorstep.
                 </h1>
-                
-                <!-- Refined Descriptive Context Layer -->
-                <p style="margin: 0 !important; font-size: 1.125rem !important; color: #475569 !important; line-height: 1.7 !important; max-width: 34rem !important; font-family: sans-serif !important;">
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
                     Ditch the grocery lists, messy meal preps, and complex calorie counting. Get premium, chef-crafted, high-protein salads and macro-balanced bowls tailored precisely to your fitness goals.
                 </p>
-                
-                <!-- Interactive High-Conversion CTA Container -->
-                <div style="display: flex !important; gap: 1.25rem !important; width: 100% !important; margin-top: 0.5rem !important;">
-                    <a href="#plans" style="display: inline-block !important; background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important; color: #ffffff !important; padding: 1rem 2.25rem !important; border-radius: 0.75rem !important; font-weight: 700 !important; font-size: 1rem !important; text-decoration: none !important; box-shadow: 0 10px 20px -6px rgba(16, 185, 129, 0.3) !important; transition: all 0.2s ease !important; text-align: center !important; font-family: sans-serif !important;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 24px -6px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 10px 20px -6px rgba(16, 185, 129, 0.3)';">
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <a href="#plans" class="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-center px-8 py-3.5 rounded-xl shadow-md transition-all">
                         Explore Subscriptions
                     </a>
-                    <!--<a href="#contact" style="display: inline-block !important; background-color: #ffffff !important; color: #334155 !important; padding: 1rem 2.25rem !important; border-radius: 0.75rem !important; font-weight: 700 !important; font-size: 1rem !important; text-decoration: none !important; border: 1px solid #cbd5e1 !important; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03) !important; transition: all 0.2s ease !important; text-align: center !important; font-family: sans-serif !important;" onmouseover="this.style.backgroundColor='#f8fafc'; this.style.transform='translateY(-2px)';" onmouseout="this.style.backgroundColor='#ffffff'; this.style.transform='none';">
+                    <!-- <a href="#contact" class="bg-white hover:bg-slate-50 text-slate-700 font-bold text-center px-8 py-3.5 rounded-xl border border-slate-200 transition-colors">
                         Talk to Nutritionist
-                    </a>-->
+                    </a> -->
                 </div>
-
-                <!-- Live Social Trust Footprint -->
-                <div style="display: flex !important; align-items: center !important; gap: 2rem !important; margin-top: 1.5rem !important; border-top: 1px solid #e2e8f0 !important; padding-top: 1.5rem !important; width: 100% !important;">
-                    <div style="font-family: sans-serif !important;"><b style="color: #0f172a !important; font-size: 1.25rem !important;">4.9 ★</b> <span style="color: #64748b !important; font-size: 0.85rem !important; display: block;">Customer Rating</span></div>
-                    <div style="width: 1px !important; height: 2rem !important; background-color: #e2e8f0 !important;"></div>
-                    <div style="font-family: sans-serif !important;"><b style="color: #0f172a !important; font-size: 1.25rem !important;">15k+</b> <span style="color: #64748b !important; font-size: 0.85rem !important; display: block;">Healthy Bowls Delivered</span></div>
+                <!-- Trust Footprint -->
+                <div class="flex items-center justify-center md:justify-start gap-8 border-t border-slate-200 pt-6 mt-2 w-full">
+                    <div><b class="text-slate-900 text-xl font-extrabold block">4.9 ★</b> <span class="text-slate-500 text-xs font-medium">Customer Rating</span></div>
+                    <div class="w-px h-8 bg-slate-200"></div>
+                    <div><b class="text-slate-900 text-xl font-extrabold block">15k+</b> <span class="text-slate-500 text-xs font-medium">Healthy Bowls Delivered</span></div>
                 </div>
-
             </div>
-            <!-- RIGHT COMPONENT: 3D-EFFECT INTERACTIVE GRAPHICS CARD -->
-             <div style="display: flex !important; justify-content: center !important; align-items: center !important; z-index: 10 !important; width: 100% !important; box-sizing: border-box !important;">
-                
-                <!-- Premium Rounded Culinary Card Layout Container -->
-                <div style="background-color: #ffffff !important; border: 1px solid rgba(226,232,240,0.8) !important; border-radius: 2rem !important; padding: 1.75rem !important; box-shadow: 0 20px 40px -10px rgba(15,23,42,0.08) !important; width: 100% !important; max-w: 420px !important; position: relative !important; text-align: center !important; box-sizing: border-box !important;">
-                    
-                    <!-- Floating Calorie Badge Layer -->
-                    <div style="position: absolute !important; top: 1.25rem !important; right: 1.25rem !important; background-color: #0f172a !important; color: #ffffff !important; font-size: 0.65rem !important; font-weight: 700; padding: 0.35rem 0.75rem !important; border-radius: 0.375rem !important; font-family: sans-serif !important;">
+
+            <!-- Hero Right Side: Graphic Display Card -->
+            <div class="md:col-span-5 flex justify-center relative w-full">
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-xl max-w-sm w-full relative text-center">
+                    <div class="absolute top-4 right-4 bg-slate-900 text-white text-[11px] font-bold px-3 py-1 rounded-md shadow-sm z-10">
                         🔥 Only 420 kcal
                     </div>
-                    
-                    <!-- Food Presentation Frame Frame -->
-                    <div style="width: 100% !important; aspect-ratio: 1/1 !important; background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%) !important; border-radius: 1.5rem !important; display: flex !important; align-items: center !important; justify-content: center !important; margin-bottom: 1.5rem !important; border: 1px solid #bbf7d0 !important;">
-                        <div class="relative rounded-full p-2 bg-transparent hover:scale-[1.01] transition-transform duration-500"><div class="rounded-full bg-white/40 backdrop-blur-xs p-4 md:p-6 shadow-2xl border border-white/50"><div class="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden mx-auto shadow-inner bg-cream-bg select-none animate-slow-spin"><img alt="Healthy Organic Salad Bowl" class="w-full h-full object-cover filter contrast-[1.01] saturate-[1.02]" src="images/vitabowl_plate.jpg"></div></div></div>
+                    <div class="w-full aspect-square bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl flex items-center justify-center mb-5 border border-emerald-200/40 overflow-hidden">
+                        <span class="text-7xl drop-shadow-md">
+                            <img src="images/vitabowl_plate.jpg" alt="Vita Bowl" style="width:100%; height:100%; object-fit:cover;">
+                        </span>
                     </div>
-                    
-                    <!-- Card Content Text Blocks -->
-                    <h3 style="margin: 0 0 0.5rem 0 !important; font-size: 1.35rem !important; font-weight: 800 !important; color: #0f172a !important; font-family: sans-serif !important;">Your Daily Bowl of Health</h3>
-                    <p style="margin: 0 !important; font-size: 0.85rem !important; color: #475569 !important; font-family: sans-serif !important; line-height: 1.5 !important;">
-                        Every single subscription container maps farm-fresh local produce, zero artificial additives, and strict precision macro targets.
-                    </p>
-                    
-                    <!-- Nutrition Pills Bar Layout -->
+                    <h3 class="text-slate-900 font-bold text-xl mb-1.5">Your Daily Bowl of Health</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Every batch uses farm-fresh local produce, zero artificial preservatives, and macro-calculated portions.</p>
                     <div style="display: flex !important; justify-content: center !important; gap: 0.5rem !important; margin-top: 1rem !important;">
-                        <span style="background-color: #f1f5f9 !important; color: #334155 !important; font-size: 0.7rem !important; font-weight: 600 !important; padding: 0.3rem 0.6rem !important; border-radius: 0.25rem !important; font-family: sans-serif !important;">🍗 60-70g Protein</span>
-                        <span style="background-color: #f1f5f9 !important; color: #334155 !important; font-size: 0.7rem !important; font-weight: 600 !important; padding: 0.3rem 0.6rem !important; border-radius: 0.25rem !important; font-family: sans-serif !important;">🌾 Low Carbs</span>
-                        <span style="background-color: #f1f5f9 !important; color: #334155 !important; font-size: 0.7rem !important; font-weight: 600 !important; padding: 0.3rem 0.6rem !important; border-radius: 0.25rem !important; font-family: sans-serif !important;">🌱 Fresh Veggies</span>
+                        <span style="background-color: #f1f5f9 !important; color: #334155 !important; font-size: 0.7rem !important; font-weight: 600 !important; padding: 0.3rem 0.3rem !important; border-radius: 0.25rem !important; font-family: sans-serif !important;">🍗 60-70g Protein</span>
+                        <span style="background-color: #f1f5f9 !important; color: #334155 !important; font-size: 0.7rem !important; font-weight: 600 !important; padding: 0.3rem 0.3rem !important; border-radius: 0.25rem !important; font-family: sans-serif !important;">🌾 Low Carbs</span>
+                        <span style="background-color: #f1f5f9 !important; color: #334155 !important; font-size: 0.7rem !important; font-weight: 600 !important; padding: 0.3rem 0.3rem !important; border-radius: 0.25rem !important; font-family: sans-serif !important;">🌱 Fresh Veggies</span>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
-
-    <section id="plans" class="py-20 bg-white">
+    
+    <section id="plans" class="py-20 bg-white border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-                <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Popular Plans You Can't Miss</h2>
-                <p class="text-gray-600 text-lg">From precision fitness fuel to wellness bowls. Select a plan to customize your schedule.</p>
+            
+            <!-- Category Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">Popular Plans You Can't Miss</h2>
+                <p class="text-slate-600 text-sm md:text-base">Premium weight-management and muscle recovery meal plans. Each subscription tier includes 24 daily chef-curated deliveries (Sundays excluded) with flexible pause features. Prices include GST.</p>
             </div>
 
-            <!-- CATEGORY 1: HIGH PROTEIN PRESETS -->
-            <div class="mb-12">
-                <h3 class="text-xl font-bold text-green-700 border-b-2 border-green-200 pb-2 mb-6">High Protein Fitness Plans</h3>
-                <div class="grid lg:grid-cols-4 md:grid-cols-2">
+            <!-- LAYER 1: HIGH PROTEIN FITNESS PRESETS -->
+            <div class="mb-4">
+                <h3 class="text-lg md:text-xl font-extrabold text-emerald-700 border-b-2 border-emerald-100 pb-2 mb-6 flex items-center gap-2">
+                     High Protein Fitness Plans 
+                </h3>
+                <!-- Dynamic Grid System: 1 column on mobile, 2 columns on tablet, 4 columns on desktop -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- 1. High Protein Chicken -->
-                    <div class="plan-card">
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
                         <div>
-                            <div class="plan-image-frame">
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
                                 <img src="images/HighProteinChicken.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-red-100 text-red-800">Non-Veg</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1">High Protein Chicken</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 75-80g \| C: 30-35g \| F: 6-7g \| 450-500 kcal</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹7,560 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <span class="bg-red-100 text-red-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Non-Veg</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">High Protein Chicken</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">P: 75-80g | C: 30-35g | F: 6-7g | 450-500 kcal</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹7,560 <span class="text-xs font-normal text-slate-500">/ 24 meals</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(1)" class="w-full bg-green-600 text-white py-2 rounded-xl font-semibold">Get This Plan</button>
+                        <button onclick="selectRemozPlan(1)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
+
                     <!-- 2. High Protein Veg Salad -->
-                    <div class="plan-card">
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
                         <div>
-                            <div class="plan-image-frame">
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
                                 <img src="images/HighProteinVegSalad.jpg" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-green-100 text-green-800">Pure Veg</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1">High Protein Veg Salad</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 50-55g \| C: 60-70g \| F: 10-15g \| 450-500 kcal</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹6,299 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Pure Veg</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">High Protein Veg Salad</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">P: 50-55g | C: 60-70g | F: 10-15g | 450-500 kcal</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹6,299 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(2)" class="w-full bg-green-600 text-white py-2 rounded-xl font-semibold">Get This Plan</button>
+                        <button onclick="selectRemozPlan(2)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
+
                     <!-- 3. High Protein Egg Salad -->
-                    <div class="plan-card">
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
                         <div>
-                            <div class="plan-image-frame">
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
                                 <img src="images/HighProteinEggSalad.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-yellow-100 text-yellow-800">Eggitarian</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1">High Protein Egg Salad</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 15-20g \| C: 20-25g \| F: 2-3g \| 200-250 kcal</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹6,552 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <span class="bg-yellow-100 text-yellow-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Eggitarian</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">High Protein Egg Salad</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">P: 15-20g | C: 20-25g | F: 2-3g | 200-250 kcal</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹6,552 <span class="text-xs font-normal text-slate-500">/ 24 meals</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(3)" class="w-full bg-green-600 text-white py-2 rounded-xl font-semibold">Get This Plan</button>
+                        <button onclick="selectRemozPlan(3)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
+
                     <!-- 4. High Protein Hybrid Plan Salad -->
-                    <div class="plan-card">
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
                         <div>
-                            <div class="plan-image-frame">
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
                                 <img src="images/HigProteinHybridSalad.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-blue-100 text-blue-800">Mix Macros</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1">High Protein Hybrid Plan</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 55-60g \| C: 35-40g \| F: 8-10g \| 450-500 kcal</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹7,260 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Mix Macros</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">High Protein Hybrid</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">P: 55-60g | C: 35-40g | F: 8-10g | 450-500 kcal</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹7,260 <span class="text-xs font-normal text-slate-500">/ 24 meals</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(4)" class="w-full bg-green-600 text-white py-2 rounded-xl font-semibold">Get This Plan</button>
+                        <button onclick="selectRemozPlan(4)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
                 </div>
             </div>
@@ -432,73 +177,70 @@
                 <i class="text-gray-600 text-lg" style="text-decoration: underline;">All prices include GST. We remain Closed on Sundays.</i>
             </div>
 
-            <!-- CATEGORY 2: CORE SALADS & HYBRIDS -->
-            <div class="mb-12">
-                <h3 class="text-xl font-bold text-green-700 border-b-2 border-green-200 pb-2 mb-6">Core &amp; Hybrid Salads (24 Meals)</h3>
-                <div class="grid lg:grid-cols-4 md:grid-cols-2">
+
+            <div class="mb-4">
+                <h3 class="text-lg md:text-xl font-extrabold text-emerald-700 border-b-2 border-emerald-100 pb-2 mb-6 flex items-center gap-2">
+                    Core &amp; Hybrid Salads
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- 5. Veg Salad -->
-                    <div class="plan-card">
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
                                 <img src="images/VegSalad.jpg" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-green-100 text-green-800">Pure Veg</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1">Veg Salad</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 40-45g \| C: 50-60g \| F: 12-15g \| 450-500 kcal</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹5,800 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Pure Veg</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">Veg Salad Standard</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">P: 40-45g | C: 50-60g | F: 12-15g | 450-500 kcal</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹5,800 <span class="text-xs font-normal text-slate-500">/ 24 meals</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(5)" class="w-full bg-green-600 text-white py-2 rounded-xl font-semibold">Get This Plan</button>
+                        <button onclick="selectRemozPlan(5)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
+
                     <!-- 6. Egg Salad -->
-                    <div class="plan-card">
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
                                 <img src="images/EggSalad.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-yellow-100 text-yellow-800">Eggitarian</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1">Egg Salad</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 10-12g \| C: 20-25g \| F: 2-3g \| 180-200 kcal</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹6,000 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <span class="bg-yellow-100 text-yellow-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Eggitarian</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">Egg Salad Standard</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">P: 10-12g | C: 20-25g | F: 2-3g | 180-200 kcal</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹6,000 <span class="text-xs font-normal text-slate-500">/ 24 meals</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(6)" class="w-full bg-green-600 text-white py-2 rounded-xl font-semibold">Get This Plan</button>
+                        <button onclick="selectRemozPlan(6)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
+
                     <!-- 7. Hybrid Salad -->
-                    <div class="plan-card">
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
-                                <img src="images/HybridSalad.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
+                                 <img src="images/HybridSalad.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-purple-100 text-purple-800">Hybrid</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1">Hybrid Salad</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 70g \| 500 kcal \| Carbs: 18g \| Fat: 10g</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹7,260 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Hybrid Balance</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">Hybrid Salad Bowl</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">Protein: 70g | Carbs: 18g | Fat: 10g | 500 kcal</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹7,260 <span class="text-xs font-normal text-slate-500">/ 24 meals</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(7)" class="w-full bg-green-600 text-white py-2 rounded-xl font-semibold">Get This Plan</button>
+                        <button onclick="selectRemozPlan(7)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
+
                     <!-- 8. Regular Protein Salad - Veg Spl Offer -->
-                    <div class="plan-card plan-card-featured">
-                        <!-- FIXED: Placed Popular badge into structural wrapper with padding offsets -->
-                        <span class="ribbon-popular">Popular</span>
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
-                                <img src="images/RegularProteinSalad.jpg" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
+                    <div class="bg-white border-2 border-emerald-500 rounded-2xl p-5 shadow-md hover:shadow-lg transition-all flex flex-col justify-between relative bg-gradient-to-b from-emerald-50/20 to-white">
+                        <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white px-3 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider shadow-sm">Popular</span>
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
+                                 <img src="images/RegularProteinSalad.jpg" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-emerald-100 text-emerald-800">Special Deal</span>
-                                <span class="custom-plan-badge bg-green-100 text-green-800">Best Value</span>
+                            <div class="flex gap-1.5 mb-2 flex-wrap">
+                                <span class="bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Special Deal</span>
+                                <span class="bg-teal-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Best Value</span>
                             </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1 plan-title-fix">Regular Protein - Veg Spl</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 40-45g | C: 50-60g | F: 20-25g | 450-500 kcal</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹5,800 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-1 mb-1">Regular Protein - Veg Spl</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">P: 40-45g | C: 50-60g | F: 20-25g | 450-500 kcal</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹5,800 <span class="text-xs font-normal text-slate-500">/ 24 meals</span></div>
                         </div>
-                        <!-- FIXED: Button changed from black (bg-gray-900) to standard green brand guidelines -->
-                        <button onclick="selectRemozPlan(8)" class="brand-btn-green">Get This Plan</button>
+                        <button onclick="selectRemozPlan(8)" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
                 </div>
             </div>
@@ -506,232 +248,197 @@
                 <i class="text-gray-600 text-lg" style="text-decoration: underline;">All prices include GST. We remain Closed on Sundays.</i>
             </div>
 
-            <!-- CATEGORY 3: TRIALS & SPECIAL FASTING BOWLS (SCRUBBED)   -->
-            <div class="mb-12" style="width: 100% !important; clear: both !important;">
-                <h3 class="text-xl font-bold text-green-700 border-b-2 border-green-200 pb-2 mb-6">Trials &amp; Festive Fasting Bowls</h3>
-                <div class="grid lg:grid-cols-4 md:grid-cols-2" style="display: grid !important; gap: 1.75rem !important;">
-                    
+
+            <div class="mb-4">
+                <h3 class="text-lg md:text-xl font-extrabold text-emerald-700 border-b-2 border-emerald-100 pb-2 mb-6 flex items-center gap-2">
+                    Trials &amp; Festive Fasting Bowls
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- 9. Trial - Veg Protein Salad -->
-                    <div class="plan-card" style="display: flex !important; flex-direction: column !important; justify-content: space-between !important; min-width: 0 !important; width: 100% !important;">
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
-                                <img src="images/TrialVeg.jpg" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
+                                 <img src="images/TrialVeg.jpg" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-gray-100 text-gray-800">Sample Box</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1 plan-title-fix">Trial - Veg Protein Salad</h4>
-                            <p class="text-xs text-gray-500 mb-4">P: 20-58g | 250-610 kcal | Carbs: 24-69g</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹299 <span class="text-xs font-normal text-gray-500">/ 1 meal</span></div>
+                            <span class="bg-slate-100 text-slate-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Sample Box</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">Trial - Veg Protein Salad</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">P: 20-58g | 250-610 kcal | Carbs: 24-69g</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹299 <span class="text-xs font-normal text-slate-500">/ 1 meal</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(9)" class="brand-btn-green">Get This Plan</button>
+                        <button onclick="selectRemozPlan(9)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
 
                     <!-- 10. Fasting Bowl - 9 Days -->
-                    <div class="plan-card opacity-75" style="display: flex !important; flex-direction: column !important; justify-content: space-between !important; min-width: 0 !important; width: 100% !important;">
-                         <span class="badge-slots-full">Slots Full</span>
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 opacity-65 flex flex-col justify-between relative select-none">
+                        <span class="absolute top-3 right-3 bg-red-500 text-white text-[9px] font-black px-2 py-0.5 rounded shadow-xs uppercase">Slots Full</span>
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl">
                                 <img src="images/NavratriSpl.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-orange-100 text-orange-800">Festive 9-Day</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1 plan-title-fix">Fasting Bowl - 9 Days</h4>
-                            <p class="text-xs text-gray-500 mb-4">Barnyard Millet Dosa, Idli, Sabudana Khichdi</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹2,690 <span class="text-xs font-normal text-gray-500">/ 9 meals</span></div>
+                            <span class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Festive 9-Day</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">Fasting Bowl - 9 Days</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">Barnyard Millet Dosa, Idli, Sabudana Khichdi</p>
+                            <div class="text-2xl font-black text-slate-400 mb-4">₹2,690</div>
                         </div>
-                        <button disabled class="w-full bg-gray-300 text-gray-600 py-2 rounded-xl font-semibold cursor-not-allowed">Slots Full</button>
+                        <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2.5 rounded-xl text-sm cursor-not-allowed border-none">Slots Full</button>
                     </div>
 
                     <!-- 11. Fasting Bowl - 7 Days -->
-                    <div class="plan-card opacity-75" style="display: flex !important; flex-direction: column !important; justify-content: space-between !important; min-width: 0 !important; width: 100% !important;">
-                        <span class="badge-slots-full">Slots Full</span>
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 opacity-65 flex flex-col justify-between relative select-none">
+                        <span class="absolute top-3 right-3 bg-red-500 text-white text-[9px] font-black px-2 py-0.5 rounded shadow-xs uppercase">Slots Full</span>
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl">
                                 <img src="images/NavratriSpl.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-orange-100 text-orange-800">Festive 7-Day</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1 plan-title-fix">Fasting Bowl - 7 Days</h4>
-                            <p class="text-xs text-gray-500 mb-4">Millet specials, clean sattvik nutrition</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹2,499 <span class="text-xs font-normal text-gray-500">/ 7 meals</span></div>
+                            <span class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Festive 7-Day</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">Fasting Bowl - 7 Days</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">Millet specials, clean sattvik nutrition plan</p>
+                            <div class="text-2xl font-black text-slate-400 mb-4">₹2,499</div>
                         </div>
-                        <button disabled class="w-full bg-gray-300 text-gray-600 py-2 rounded-xl font-semibold cursor-not-allowed">Slots Full</button>
+                        <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2.5 rounded-xl text-sm cursor-not-allowed border-none">Slots Full</button>
                     </div>
 
                     <!-- 12. Fasting Bowl - 8 Days -->
-                    <div class="plan-card opacity-75" style="display: flex !important; flex-direction: column !important; justify-content: space-between !important; min-width: 0 !important; width: 100% !important;">
-                        <span class="badge-slots-full">Slots Full</span>
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 opacity-65 flex flex-col justify-between relative select-none">
+                        <span class="absolute top-3 right-3 bg-red-500 text-white text-[9px] font-black px-2 py-0.5 rounded shadow-xs uppercase">Slots Full</span>
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl">
                                 <img src="images/NavratriSpl.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-orange-100 text-orange-800">Festive 8-Day</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1 plan-title-fix">Fasting Bowl - 8 Days</h4>
-                            <p class="text-xs text-gray-500 mb-4">Premium fast-compliant gluten free items</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹2,598 <span class="text-xs font-normal text-gray-500">/ 8 meals</span></div>
+                            <span class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Festive 8-Day</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">Fasting Bowl - 8 Days</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">Premium fast-compliant gluten free variations</p>
+                            <div class="text-2xl font-black text-slate-400 mb-4">₹2,598</div>
                         </div>
-                        <button disabled class="w-full bg-gray-300 text-gray-600 py-2 rounded-xl font-semibold cursor-not-allowed">Slots Full</button>
+                        <button disabled class="w-full bg-slate-200 text-slate-400 font-bold py-2.5 rounded-xl text-sm cursor-not-allowed border-none">Slots Full</button>
                     </div>
-
                 </div>
             </div>
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-0">
                 <i class="text-gray-600 text-lg" style="text-decoration: underline;">All prices include GST. We remain Closed on Sundays.</i>
             </div>
 
-            <!-- CATEGORY 4: FRUITS BOWLS (SCRUBBED)                     -->
-            <div class="mb-6" style="width: 100% !important; clear: both !important;">
-                <h3 class="text-xl font-bold text-green-700 border-b-2 border-green-200 pb-2 mb-6">Fruits &amp; Extra Rotations</h3>
-                <div class="grid lg:grid-cols-4 md:grid-cols-2" style="display: grid !important; gap: 1.75rem !important;">
-
-                    <!-- 13. Fruits Bowl -->
-                    <div class="plan-card" style="display: flex !important; flex-direction: column !important; justify-content: space-between !important; min-width: 0 !important; width: 100% !important;">
-                        <div class="card-content-wrapper" style="margin-top: 1rem;">
-                            <div class="plan-image-frame">
+            <!-- LAYER 4: FRUITS BOWLS -->
+            <div class="mb-4">
+                <h3 class="text-lg md:text-xl font-extrabold text-emerald-700 border-b-2 border-emerald-100 pb-2 mb-6 flex items-center gap-2">
+                    Fruits &amp; Extra Rotations
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- 13. Fruits Bowl Premium -->
+                    <div class="bg-white border border-slate-200 hover:border-slate-300 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group">
+                        <div>
+                            <div class="w-full aspect-[4/3] bg-slate-50 border border-slate-100 rounded-xl mb-4 flex items-center justify-center text-4xl select-none">
                                 <img src="images/FruitBowl.png" alt="Chicken Salad" style="width:100%; height:100%; object-fit:cover;">
                             </div>
-                            <div class="badge-flex-container">
-                                <span class="custom-plan-badge bg-red-100 text-red-800">Fresh Fruits</span>
-                            </div>
-                            <h4 class="text-lg font-bold text-gray-900 mb-1 plan-title-fix">Fruits Bowl</h4>
-                            <p class="text-xs text-gray-500 mb-4">Mix Fruits approx 300gm premium cuts</p>
-                            <div class="text-2xl font-extrabold text-gray-900 mb-4">₹2,800 <span class="text-xs font-normal text-gray-500">/ 24 meals</span></div>
+                            <span class="bg-rose-100 text-red-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">Fresh Fruits</span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-2 mb-1">Fruits Bowl Premium</h4>
+                            <p class="text-xs text-slate-500 mb-4 h-8 flex items-center">Mix Fruits approx 300gm premium seasonal selections</p>
+                            <div class="text-2xl font-black text-slate-900 mb-4">₹2,800 <span class="text-xs font-normal text-slate-500">/ 24 meals</span></div>
                         </div>
-                        <button onclick="selectRemozPlan(13)" class="w-full bg-green-600 text-white py-2 rounded-xl font-semibold">Get This Plan</button>
+                        <button onclick="selectRemozPlan(13)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-sm transition-colors border-none cursor-pointer">Get This Plan</button>
                     </div>
-
                 </div>
             </div>
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
                 <i class="text-gray-600 text-lg" style="text-decoration: underline;">All prices include GST. We remain Closed on Sundays.</i>
             </div>
-            
+
         </div>
     </section>
 
-    <!-- ======================================================= -->
-    <!-- COMPACT HORIZONTAL SINGLE ROW CONTACT BROCHURE FORM     -->
-    <!-- ======================================================= -->
-    <section id="contact" style="width: 100% !important; padding: 4rem 1rem !important; background-color: #ffffff !important; display: flex !important; align-items: center !important; justify-content: center !important; box-sizing: border-box !important; clear: both !important;">
-        <!-- Main Form Panel Box - Set to a spacious max-width for horizontal layouts -->
-        <div style="background-color: #f8fafc !important; border: 1px solid #e2e8f0 !important; border-radius: 1.25rem !important; padding: 2.5rem !important; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05) !important; width: 100% !important; max-w: 900px !important; margin: 0 auto !important; box-sizing: border-box !important;">
-            
-            <!-- Header Text Elements -->
-            <div style="text-align: center !important; margin-bottom: 2rem !important;">
-                <h3 style="margin: 0 0 0.5rem 0 !important; font-size: 1.625rem !important; font-weight: 800 !important; color: #0f172a !important; font-family: sans-serif !important; tracking-spacing: -0.02em !important;">Leave your details and we will share our latest calorie-counted menus.</h3>
-                <!-- <p style="margin: 0 !important; font-size: 0.875rem !important; color: #64748b !important; font-family: sans-serif !important; line-height: 1.5 !important;">Leave your details and we will share our latest calorie-counted menus.</p> -->
-            </div>
-            
-            <!-- Internal Inputs Engine Setup -->
-            <form id="leadForm" style="margin: 0 !important; padding: 0 !important; display: flex !important; flex-direction: column !important; gap: 1.5rem !important; width: 100% !important; box-sizing: border-box !important;">
+
+        <!-- 3. COMPACT HORIZONTAL FORM SECTION -->
+    <!-- Restricted card maximum layout width to prevent full-screen stretching on laptop screens -->
+    <section id="contact" class="py-16 bg-white border-b border-slate-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-10 shadow-sm max-w-3xl mx-auto text-center">
+                <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight mb-1">Request Menu Brochure</h3>
+                <p class="text-sm text-slate-500 mb-8">Leave your details and we will share our latest calorie-counted menus.</p>
                 
-                <!-- FIXED ROW BLOCKS: Arranges the 3 field entries side-by-side inside a single horizontal line -->
-                <div style="display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1.25rem !important; width: 100% !important; box-sizing: border-box !important;">
-                    
-                    <!-- Column 1: Full Name Input -->
-                    <div style="width: 100% !important; box-sizing: border-box !important; text-align: center !important;">
-                        <label style="display: block !important; font-size: 0.875rem !important; font-weight: 600 !important; color: #475569 !important; margin-bottom: 0.5rem !important; font-family: sans-serif !important;">Full Name</label>
-                        <input id="formName" type="text" required style="width: 100% !important; text-align: center !important; border: 1px solid #cbd5e1 !important; padding: 0.75rem 1rem !important; border-radius: 0.5rem !important; background-color: #ffffff !important; font-size: 0.95rem !important; color: #1e293b !important; box-sizing: border-box !important; outline: none !important;">
+                <!-- Pure Tailwind responsive form: Stacks on mobile, snaps into a 3-column single row on desktop -->
+                <form id="leadForm" class="flex flex-col md:flex-row md:items-end gap-5 w-full">
+                    <div class="flex-1 flex flex-col gap-1.5">
+                        <label for="formName" class="text-xs font-bold text-slate-600 uppercase tracking-wide text-center md:text-left">Full Name</label>
+                        <input id="formName" type="text" required placeholder="Your name" class="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-center md:text-left focus:border-emerald-500 outline-none transition text-sm">
                     </div>
-                    
-                    <!-- Column 2: Phone Number Input -->
-                    <div style="width: 100% !important; box-sizing: border-box !important; text-align: center !important;">
-                        <label style="display: block !important; font-size: 0.875rem !important; font-weight: 600 !important; color: #475569 !important; margin-bottom: 0.5rem !important; font-family: sans-serif !important;">Phone Number</label>
-                        <input id="formPhone" type="tel" required style="width: 100% !important; text-align: center !important; border: 1px solid #cbd5e1 !important; padding: 0.75rem 1rem !important; border-radius: 0.5rem !important; background-color: #ffffff !important; font-size: 0.95rem !important; color: #1e293b !important; box-sizing: border-box !important; outline: none !important;">
+                    <div class="flex-1 flex flex-col gap-1.5">
+                        <label for="formPhone" class="text-xs font-bold text-slate-600 uppercase tracking-wide text-center md:text-left">Phone Number</label>
+                        <input id="formPhone" type="tel" required placeholder="Mobile number" class="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-center md:text-left focus:border-emerald-500 outline-none transition text-sm">
                     </div>
-                    
-                    <!-- Column 3: Diet Preference Dropdown Select -->
-                    <div style="width: 100% !important; box-sizing: border-box !important; text-align: center !important;">
-                        <label style="display: block !important; font-size: 0.875rem !important; font-weight: 600 !important; color: #475569 !important; margin-bottom: 0.5rem !important; font-family: sans-serif !important;">Diet Preference</label>
-                        <select id="formDiet" style="width: 100% !important; text-align-last: center !important; border: 1px solid #cbd5e1 !important; padding: 0.75rem 1rem !important; border-radius: 0.5rem !important; background-color: #ffffff !important; font-size: 0.95rem !important; color: #1e293b !important; box-sizing: border-box !important; outline: none !important; cursor: pointer !important;">
+                    <div class="flex-1 flex flex-col gap-1.5">
+                        <label for="formDiet" class="text-xs font-bold text-slate-600 uppercase tracking-wide text-center md:text-left">Diet Preference</label>
+                        <select id="formDiet" class="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-center md:text-left focus:border-emerald-500 outline-none transition text-sm cursor-pointer appearance-none">
                             <option value="Veg">Veg</option>
                             <option value="Non-Veg">Non-Veg</option>
                             <option value="Eggitarian">Eggitarian</option>
                         </select>
                     </div>
-                    
-                </div>
-                
-                 <div style="width: 100% !important; display: flex !important; justify-content: center !important; margin-top: 0.5rem !important;">
-                    <button type="submit" style="width: 100% !important; max-width: 240px !important; background-color: #10b981 !important; color: #ffffff !important; padding: 0.85rem !important; font-weight: 700 !important; border-radius: 0.5rem !important; border: none !important; cursor: pointer !important; font-size: 1rem !important; box-sizing: border-box !important; font-family: sans-serif !important; transition: background-color 0.2s ease !important;" onmouseover="this.style.backgroundColor='#059669'" onmouseout="this.style.backgroundColor='#10b981'">
+                    <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-lg text-sm transition-colors cursor-pointer md:w-auto w-full h-[46px]">
                         Submit Inquiry
                     </button>
-                </div>
-            </form>
-        </div> 
+                </form>
+            </div>
+        </div>
     </section>
 
-
-
-   
-    <footer class="bg-black text-gray-400 py-16" style="background-color: #000000 !important; font-family: sans-serif; text-align: center !important; width: 100% !important; padding-top: 5rem !important; padding-bottom: 5rem !important;">
-        <div class="max-w-4xl mx-auto px-4 flex flex-col items-center justify-center text-center" style="display: flex; flex-direction: column; align-items: center; gap: 4rem;">
-
-            <!-- ======================================================= -->
-            <!-- FIXED 3-COLUMN CORE CENTERED LINK CAROUSEL              -->
-            <!-- ======================================================= -->
-            <!-- FIXED BLOCK: Wrapped into a max-width container and center aligned -->
-            <div style="width: 100% !important; max-width: 850px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 2rem !important; text-align: center !important; justify-content: center !important; align-items: start !important; box-sizing: border-box !important;">
-                
-                <!-- Column 1: Brand Info -->
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.75rem;">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                        <div style="font-size: 2rem;">
-                            <img src="images/logo.webp" alt="Chicken Salad" style="width:50%; height:50%; object-fit:cover;">
-                        </div>
-                    </div>
-                    <p style="color: #94a3b8; font-size: 0.85rem; max-width: 16rem; margin: 0; line-height: 1.5;">
-                        Healthy meals delivered daily. Thoughtfully prepared salads, juices, and soups designed to fuel your day.
-                    </p>
-                    <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.25rem;">
+    <!-- 4. CENTRED PREMIUM PITCH-BLACK FOOTER -->
+     <footer class="bg-black text-slate-400 py-16 border-t border-slate-900">
+        <!-- Main Layout Grid wrapper: Locks into 3 distinct columns on desktop layouts -->
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12 text-center items-start">
+            
+            <!-- COLUMN 1: MASCOT LOGO, BRAND SLOGAN & SOCIALS -->
+            <div class="flex flex-col items-center gap-4 w-full">
+                <!-- Mascot image placement matching the header layout height scales -->
+                <img src="images/logo.webp" alt="Remoz Logo" class="h-[120px] w-auto object-contain mb-2">
+                <p class="text-slate-400 text-sm max-w-xs leading-relaxed m-0">
+                    Healthy meals delivered daily. Thoughtfully prepared salads, juices, and soups designed to fuel your day.
+                </p>
+                <!-- Social Media Channel Icons -->
+                <div class="flex gap-4 mt-2 text-white font-bold text-lg">
+                    <!-- <a href="#" class="hover:text-emerald-400 transition-colors text-xl"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-emerald-400 transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a> -->
+                    <div style="display: flex; justify-content: center; gap: 0.5rem;">
                         <a href="https://www.facebook.com/share/1BC1aaVDTk/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all duration-300 hover:-translate-y-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                        <a href="https://www.instagram.com/remoz_revitaliz?igsh=MXh6djhqNTF6djVkNw==" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all duration-300 hover:-translate-y-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                        <a href="https://www.instagram.com/remoz_revitaliz" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-all duration-300 hover:-translate-y-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Column 2: Quick Links List -->
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.75rem;">
-                    <h4 style="color: #ffffff !important; margin: 0; font-size: 1.1rem; font-weight: 700;">Quick Links</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.65rem; font-size: 0.85rem;">
-                        <li><a href="#" style="color: #94a3b8; text-decoration: none;">Our Plans</a></li>
-                        <li><a href="#" style="color: #94a3b8; text-decoration: none;">Get Started</a></li>
-                        <!-- li><a href="#" style="color: #94a3b8; text-decoration: none;">Sign In</a></li>
-                        <li><a href="#" style="color: #94a3b8; text-decoration: none;">Terms &amp; Conditions</a></li>
-                        <li><a href="#" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a></li> -->
-                    </ul>
+            <!-- COLUMN 2: QUICK NAVIGATION CHANNELS INDEX -->
+            <div class="flex flex-col items-center gap-4 w-full pt-2">
+                <h4 class="text-white text-base font-bold tracking-wide uppercase m-0">Quick Links</h4>
+                <ul class="list-none p-0 m-0 flex flex-col gap-3 text-sm">
+                    <li><a href="#plans" class="color-[#94a3b8] text-slate-400 hover:text-white transition-colors no-underline">Our Plans</a></li>
+                    <li><a href="#contact" class="color-[#94a3b8] text-slate-400 hover:text-white transition-colors no-underline">Get Started</a></li>
+                </ul>
+            </div>
+
+            <!-- COLUMN 3: GET IN TOUCH CONTACT ACTION MATRIX -->
+            <div class="flex flex-col items-center gap-4 w-full pt-2">
+                <h4 class="text-white text-base font-bold tracking-wide uppercase m-0">Get In Touch</h4>
+                <p class="text-slate-400 text-sm max-w-xs leading-relaxed m-0">
+                    Have questions about our plans? Reach out and we'll help.
+                </p>
+                <!-- Selectable Target Business Email Link Handle -->
+                <div class="text-white text-base font-bold bg-slate-900/40 border border-slate-800/80 px-4 py-2 rounded-lg select-all w-full max-w-[260px] text-center">
+                    remoz2306@gmail.com
                 </div>
-
-                <!-- Column 3: Contact Channels -->
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.75rem;">
-                    <h4 style="color: #ffffff !important; margin: 0; font-size: 1.1rem; font-weight: 700;">Get In Touch</h4>
-                    <p style="color: #94a3b8; font-size: 0.85rem; max-width: 16rem; margin: 0; line-height: 1.5;">
-                        Have questions about our plans? Reach out and we'll help.
-                    </p>
-                    <div style="color: #ffffff; font-size: 0.9rem; font-weight: 600; margin-top: 0.15rem;">
-                        remoz2306@gmail.com
-                    </div>
-                    <a href="#plans" style="display: inline-block; background-color: #10b981 !important; color: #ffffff !important; padding: 0.65rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; margin-top: 0.25rem; width: auto; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);">
-                        Start Your Subscription
-                    </a>
-                </div>
-
+                <!-- Start Subscription Direct Call-to-Action Link Button -->
+                <a href="#plans" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-emerald-500/10 transition-colors w-full max-w-[260px] text-center no-underline">
+                    Start Your Subscription
+                </a>
             </div>
 
         </div>
         
-        <!-- Bottom copyright footer text -->
-        <div class="max-w-6xl mx-auto px-4 mt-16 pt-8 text-center text-xs" style="border-top: 1px solid #1e293b; color: #475569; margin-top:15px;">
-            <p>&copy; 2026 Remoz.in  All rights reserved.</p>
+        <!-- Bottom copyright margin tracker anchor -->
+        <div class="max-w-6xl mx-auto px-4 mt-16 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
+            <p>&copy; 2026 Remoz.in All rights reserved.</p>
         </div>
     </footer>
 
-
-
+    <!-- Linked app.js file handles form redirection parameters seamlessly -->
     <script src="app.js"></script>
 </body>
 </html>

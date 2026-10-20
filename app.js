@@ -5,7 +5,7 @@
 
 // Define your target business mobile phone number here (with international country code, without + symbol)
 // Replace 919876543210 with your actual business WhatsApp number
-const WHATSAPP_BUSINESS_NUMBER = "919987525104"; 
+const WHATSAPP_BUSINESS_NUMBER = "917972319483"; 
 
 // Initialize all layout attributes cleanly when the page context mounts
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,7 +27,7 @@ const REMOZ_PLANS_DATABANK = {
     7: { name: "Hybrid Salad Balance Plan", price: "₹7,260", details: "24 Meals | Protein: 70g, Carbs: 18g, Fat: 10g" },
     8: { name: "Regular Protein Salad - Veg Spl Offer", price: "₹5,800", details: "24 Meals | P: 40-45g, C: 50-60g, F: 20-25g" },
     9: { name: "Trial - Veg Protein Salad Box", price: "₹299", details: "1 Meal Trial | P: 20-58g, C: 24-69g" },
-    14: { name: "Premium Fruits Bowl Mix (300g)", price: "₹2800", details: "24 Deliveries Daily Fruit Assortment" }
+    13: { name: "Premium Fruits Bowl Mix (300g)", price: "₹2800", details: "24 Deliveries Daily Fruit Assortment" }
 };
 
 /**
@@ -45,6 +45,7 @@ function selectRemozPlan(planId) {
     // Formulate pristine message strings to dispatch straight into business terminals
     const textMessage = 
 `Hello Remoz Team!  
+
 I would like to know more about:
  *Plan Name:* ${selectedPlan.name}
  *Price:* ${selectedPlan.price}
@@ -85,7 +86,7 @@ Please send me the latest Remoz healthy meal menu brochure.`;
 
         // Encode message safely for URL transmission
         const encodedMessage = encodeURIComponent(textMessage);
-        const whatsappUrl = `https://wa.me/919987525104?text=${encodedMessage}`;
+        const whatsappUrl = `https://wa.me/917972319483?text=${encodedMessage}`;
 
         console.log("Routing structured lead information package to WhatsApp.");
         
